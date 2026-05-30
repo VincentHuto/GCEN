@@ -1,0 +1,22 @@
+{
+  "itemGroup.gcen": "Gluttonous Canines Eating Nightshades",
+  "item.gcen.spaghetti": "Spaghetti",
+  "block.gcen.spaghetti": "Spaghetti",
+  "block.gcen.spaghetti_pile": "Spaghetti Pile",
+  "item.gcen.tomato": "Tomato",
+  "item.gcen.tomato_seeds": "Tomato Seeds",
+  "item.gcen.labrador_dog_spawn_egg": "Labrador Dog Spawn Egg",
+  "item.gcen.chihuahua_dog_spawn_egg": "Chihuahua Dog Spawn Egg",
+  "block.gcen.tomato": "Tomato",
+  "block.gcen.tomato_seeds": "Tomato Seeds",
+  "block.gcen.tomato_crop": "Tomato Crop",
+  "entity.gcen.labrador_dog": "Labrador Dog",
+  "entity.gcen.chihuahua_dog": "Chihuahua Dog",
+  "gcen.configuration.title": "Gluttonous Canines Eating Nightshades Configs",
+  "gcen.configuration.section.gcen.common.toml": "Gluttonous Canines Eating Nightshades Configs",
+  "gcen.configuration.section.gcen.common.toml.title": "Gluttonous Canines Eating Nightshades Configs",
+  "gcen.configuration.items": "Item List",
+  "gcen.configuration.logDirtBlock": "Log Dirt Block",
+  "gcen.configuration.magicNumberIntroduction": "Magic Number Text",
+  "gcen.configuration.magicNumber": "Magic Number"
+}

@@ -1,0 +1,109 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "gcen:block/spaghetti_pile",
+    "plate": "minecraft:block/white_concrete",
+    "spaghetti": "gcen:block/spaghetti_pile",
+    "meatball": "gcen:block/spaghetti_meatball"
+  },
+  "elements": [
+    {
+      "from": [2, 0, 2],
+      "to": [14, 1, 14],
+      "faces": {
+        "up": { "uv": [2, 2, 14, 14], "texture": "#plate" },
+        "down": { "uv": [2, 2, 14, 14], "texture": "#plate" },
+        "north": { "uv": [2, 15, 14, 16], "texture": "#plate" },
+        "south": { "uv": [2, 15, 14, 16], "texture": "#plate" },
+        "west": { "uv": [2, 15, 14, 16], "texture": "#plate" },
+        "east": { "uv": [2, 15, 14, 16], "texture": "#plate" }
+      }
+    },
+    {
+      "from": [3, 1, 5],
+      "to": [13, 2, 7],
+      "faces": {
+        "up": { "uv": [3, 5, 13, 7], "texture": "#spaghetti" },
+        "down": { "uv": [3, 5, 13, 7], "texture": "#spaghetti" },
+        "north": { "uv": [3, 14, 13, 15], "texture": "#spaghetti" },
+        "south": { "uv": [3, 14, 13, 15], "texture": "#spaghetti" },
+        "west": { "uv": [5, 14, 7, 15], "texture": "#spaghetti" },
+        "east": { "uv": [5, 14, 7, 15], "texture": "#spaghetti" }
+      }
+    },
+    {
+      "from": [4, 1, 9],
+      "to": [12, 2, 11],
+      "faces": {
+        "up": { "uv": [4, 9, 12, 11], "texture": "#spaghetti" },
+        "down": { "uv": [4, 9, 12, 11], "texture": "#spaghetti" },
+        "north": { "uv": [4, 14, 12, 15], "texture": "#spaghetti" },
+        "south": { "uv": [4, 14, 12, 15], "texture": "#spaghetti" },
+        "west": { "uv": [9, 14, 11, 15], "texture": "#spaghetti" },
+        "east": { "uv": [9, 14, 11, 15], "texture": "#spaghetti" }
+      }
+    },
+    {
+      "from": [5, 2, 3],
+      "to": [7, 3, 13],
+      "faces": {
+        "up": { "uv": [5, 3, 7, 13], "texture": "#spaghetti" },
+        "down": { "uv": [5, 3, 7, 13], "texture": "#spaghetti" },
+        "north": { "uv": [5, 13, 7, 14], "texture": "#spaghetti" },
+        "south": { "uv": [5, 13, 7, 14], "texture": "#spaghetti" },
+        "west": { "uv": [3, 13, 13, 14], "texture": "#spaghetti" },
+        "east": { "uv": [3, 13, 13, 14], "texture": "#spaghetti" }
+      }
+    },
+    {
+      "from": [9, 2, 4],
+      "to": [11, 3, 12],
+      "faces": {
+        "up": { "uv": [9, 4, 11, 12], "texture": "#spaghetti" },
+        "down": { "uv": [9, 4, 11, 12], "texture": "#spaghetti" },
+        "north": { "uv": [9, 13, 11, 14], "texture": "#spaghetti" },
+        "south": { "uv": [9, 13, 11, 14], "texture": "#spaghetti" },
+        "west": { "uv": [4, 13, 12, 14], "texture": "#spaghetti" },
+        "east": { "uv": [4, 13, 12, 14], "texture": "#spaghetti" }
+      }
+    },
+    {
+      "from": [4, 2, 4],
+      "to": [7, 5, 7],
+      "faces": {
+        "up": { "uv": [4, 4, 7, 7], "texture": "#meatball" },
+        "down": { "uv": [4, 4, 7, 7], "texture": "#meatball" },
+        "north": { "uv": [4, 9, 7, 12], "texture": "#meatball" },
+        "south": { "uv": [4, 9, 7, 12], "texture": "#meatball" },
+        "west": { "uv": [4, 9, 7, 12], "texture": "#meatball" },
+        "east": { "uv": [4, 9, 7, 12], "texture": "#meatball" }
+      }
+    },
+    {
+      "from": [9, 2, 8],
+      "to": [12, 5, 11],
+      "faces": {
+        "up": { "uv": [9, 8, 12, 11], "texture": "#meatball" },
+        "down": { "uv": [9, 8, 12, 11], "texture": "#meatball" },
+        "north": { "uv": [9, 5, 12, 8], "texture": "#meatball" },
+        "south": { "uv": [9, 5, 12, 8], "texture": "#meatball" },
+        "west": { "uv": [9, 5, 12, 8], "texture": "#meatball" },
+        "east": { "uv": [9, 5, 12, 8], "texture": "#meatball" }
+      }
+    },
+    {
+      "from": [7, 2, 6],
+      "to": [9, 4, 8],
+      "faces": {
+        "up": { "uv": [7, 6, 9, 8], "texture": "#meatball" },
+        "down": { "uv": [7, 6, 9, 8], "texture": "#meatball" },
+        "north": { "uv": [7, 8, 9, 10], "texture": "#meatball" },
+        "south": { "uv": [7, 8, 9, 10], "texture": "#meatball" },
+        "west": { "uv": [7, 8, 9, 10], "texture": "#meatball" },
+        "east": { "uv": [7, 8, 9, 10], "texture": "#meatball" }
+      }
+    }
+  ]
+}
+
+
