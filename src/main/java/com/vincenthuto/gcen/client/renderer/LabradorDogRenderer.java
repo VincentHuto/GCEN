@@ -3,12 +3,12 @@ package com.vincenthuto.gcen.client.renderer;
 import com.vincenthuto.gcen.client.model.LabradorDogAdultModel;
 import com.vincenthuto.gcen.client.model.LabradorDogBabyModel;
 import com.vincenthuto.gcen.client.renderer.layer.LabradorDogArmorLayer;
+import com.vincenthuto.gcen.client.renderer.layer.LabradorDogCollarLayer;
 import com.vincenthuto.gcen.entity.LabradorDogEntity;
 
 import net.minecraft.client.model.animal.wolf.WolfModel;
 import net.minecraft.client.renderer.entity.AgeableMobRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.layers.WolfCollarLayer;
 import net.minecraft.client.renderer.entity.state.WolfRenderState;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.ARGB;
@@ -26,7 +26,7 @@ public class LabradorDogRenderer extends AgeableMobRenderer<LabradorDogEntity, W
                 new LabradorDogBabyModel(context.bakeLayer(LabradorDogBabyModel.LAYER_LOCATION)),
                 0.5F);
         this.addLayer(new LabradorDogArmorLayer(this, context.getModelSet(), context.getEquipmentRenderer()));
-        this.addLayer(new WolfCollarLayer(this));
+        this.addLayer(new LabradorDogCollarLayer(this));
     }
 
     @Override
