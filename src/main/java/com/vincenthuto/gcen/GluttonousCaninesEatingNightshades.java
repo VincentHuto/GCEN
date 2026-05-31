@@ -8,27 +8,34 @@ import com.vincenthuto.gcen.entity.LabradorDogEntity;
 import com.vincenthuto.gcen.block.SpaghettiPileBlock;
 import com.vincenthuto.gcen.block.TomatoCropBlock;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.component.TypedEntityData;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.entity.animal.wolf.Wolf;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -38,6 +45,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
+import net.neoforged.neoforge.event.level.BlockDropsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -185,14 +193,31 @@ public class GluttonousCaninesEatingNightshades {
                 LABRADOR_DOG.get(),
                 SpawnPlacementTypes.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                (type, level, spawnReason, pos, random) -> Wolf.checkWolfSpawnRules(EntityType.WOLF, level, spawnReason, pos, random),
+                (type, level, spawnReason, pos, random) -> checkDogSpawnRules(level, pos),
                 RegisterSpawnPlacementsEvent.Operation.REPLACE);
         event.register(
                 CHIHUAHUA_DOG.get(),
                 SpawnPlacementTypes.ON_GROUND,
                 Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                (type, level, spawnReason, pos, random) -> Wolf.checkWolfSpawnRules(EntityType.WOLF, level, spawnReason, pos, random),
+                (type, level, spawnReason, pos, random) -> checkDogSpawnRules(level, pos),
                 RegisterSpawnPlacementsEvent.Operation.REPLACE);
+    }
+
+    private static boolean checkDogSpawnRules(ServerLevelAccessor level, BlockPos pos) {
+        BlockPos groundPos = pos.below();
+        BlockState groundState = level.getBlockState(groundPos);
+        BlockState spawnState = level.getBlockState(pos);
+        BlockState aboveState = level.getBlockState(pos.above());
+        return isDogSpawnSurface(level, groundPos, groundState)
+                && spawnState.getCollisionShape(level, pos).isEmpty()
+                && spawnState.getFluidState().isEmpty()
+                && aboveState.getCollisionShape(level, pos.above()).isEmpty()
+                && aboveState.getFluidState().isEmpty()
+                && level.getRawBrightness(pos, 0) > 8;
+    }
+
+    private static boolean isDogSpawnSurface(ServerLevelAccessor level, BlockPos pos, BlockState state) {
+        return state.isFaceSturdy(level, pos, Direction.UP) || state.is(Blocks.SNOW);
     }
 
 
@@ -201,5 +226,28 @@ public class GluttonousCaninesEatingNightshades {
     public void onServerStarting(ServerStartingEvent event) {
         // Do something when the server starts
         LOGGER.info("HELLO from server starting");
+    }
+
+    @SubscribeEvent
+    public void onGrassDrops(BlockDropsEvent event) {
+        if (!(event.getBreaker() instanceof Player player) || player.isCreative()) {
+            return;
+        }
+
+        if (isTomatoSeedDroppingGrass(event.getState().getBlock()) && event.getLevel().getRandom().nextInt(16) == 0) {
+            event.getDrops().add(new ItemEntity(
+                    event.getLevel(),
+                    event.getPos().getX() + 0.5D,
+                    event.getPos().getY() + 0.5D,
+                    event.getPos().getZ() + 0.5D,
+                    new ItemStack(TOMATO_SEEDS.get())));
+        }
+    }
+
+    private static boolean isTomatoSeedDroppingGrass(Block block) {
+        return block == Blocks.SHORT_GRASS
+                || block == Blocks.TALL_GRASS
+                || block == Blocks.FERN
+                || block == Blocks.LARGE_FERN;
     }
 }

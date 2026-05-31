@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "food",
+  "ingredients": [
+    "minecraft:cooked_beef",
+    "minecraft:wheat",
+    "gcen:tomato"
+  ],
+  "result": {
+    "id": "gcen:spaghetti"
+  }
+}
+
